@@ -71,19 +71,20 @@
 
     }
 
-		$(window).resize(function(){
-	        var size = self.current();
-	        
-			if ( $('body').data('bootstrap_size') != size ) {
-				$('body')
-				    .data('bootstrap_size', size)
-				    .trigger(size);
-				    .trigger({
-					    type : 'bootstrap-size',
-					    size : size
-				    })
-			}
-		});
+    $(window).resize(function(){
+        var size = self.current(),
+            $body = $('body');
+
+        if ( $body.data('bootstrap_size') != size ) {
+            $body
+                .data('bootstrap_size', size)
+                .trigger(size)
+                .trigger({
+                    type : 'bootstrap-size',
+                    size : size
+                })
+        }
+    });
 
     return self;
 
