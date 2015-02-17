@@ -6,7 +6,6 @@
  * Origin:    https://github.com/maciej-gurban/responsive-bootstrap-toolkit
  */
 ;var ResponsiveBootstrapToolkit = (function($){
-
     // Methods and properties
     var self = {
 
@@ -71,6 +70,20 @@
         }()
 
     }
+
+		$(window).resize(function(){
+	        var size = self.current();
+	        
+			if ( $('body').data('bootstrap_size') != size ) {
+				$('body')
+				    .data('bootstrap_size', size)
+				    .trigger(size);
+				    .trigger({
+					    type : 'bootstrap-size',
+					    size : size
+				    })
+			}
+		});
 
     return self;
 
